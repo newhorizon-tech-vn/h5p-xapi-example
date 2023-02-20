@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" media="all" href="assets/styles/h5p.css" />
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="assets/main.bundle.js"></script>
+  </head>
+
+  <body>
+    <div id='h5p-container'></div>
+  </body>
+</html>
+
+<script type="text/javascript">
+    const el = document.getElementById('h5p-container');
+    const options = {
+        h5pJsonPath:  '/h5p-folder',
+        frameJs: '/assets/frame.bundle.js',
+        frameCss: '/assets/styles/h5p.css',
+    }
+    if (document.getElementById('h5p-container') === null) {
+        console.log('it exists!');
+    }
+
+    new H5PStandalone.H5P(el, options).then(function () {
+        H5P.externalDispatcher.on('xAPI', function (event) {
+        window.parent.postMessage(event.data.statement, '*');
+    });
+});
+</script>

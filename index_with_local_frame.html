@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <iframe src="http://localhost:8080/local_frame.html" height="100%" width="100%" frameborder="0" allowfullscreen="allowfullscreen" allow="geolocation *; microphone *; camera *; midi *; encrypted-media *" title="Drag the Words">
+    </iframe>
+    <script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8">
+    </script>
+  </body>
+  
+</html>
+
+<script type="text/javascript">
+    window.addEventListener('message', function receiveMessage(event) {
+    if (event.data.result === undefined) {
+      return; // Only handle messages with result
+    }
+
+    console.log(event.data.result.score);
+    // console.log(event.data.actor.name + ' just scored ' + (event.data.result.score.scaled * 100) + ' %');
+    // console.log('scored ' + (event.data.result.score.scaled * 100) + ' %');
+} , false);
+</script>
